@@ -5,9 +5,7 @@ const db = require('../database');
 const fetch = require('node-fetch');
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_CHAT_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-const GEMINI_INSIGHTS_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-
+const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 // Helper: sleep
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -105,10 +103,13 @@ function getBusinessSnapshot() {
 }
 
 // Helper: Call Gemini once
-async function callGemini(prompt, maxTokens = 512, url = GEMINI_CHAT_URL) {
+async function callGemini(prompt, maxTokens = 512, url = GEMINI_URL) {
   const response = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+  'Content-Type': 'application/json',
+  'x-goog-api-key': process.env.GEMINI_API_KEY
+},
     body: JSON.stringify({
       contents: [{ parts: [{ text: prompt }] }],
       generationConfig: { temperature: 0.7, maxOutputTokens: maxTokens }
@@ -193,7 +194,7 @@ Format your response as JSON array like this (no markdown, just raw JSON):
 ]
 Keep each text field to 1-2 sentences maximum. Use ₹ for currency. If no data exists, say so briefly.`;
 
-    const raw = await callGemini(prompt, 600, GEMINI_INSIGHTS_URL);
+    const raw = await callGemini(prompt, 600);
 
     // Parse JSON from response
     let insights = [];
