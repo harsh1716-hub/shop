@@ -5,6 +5,7 @@ const db = require('../database');
 const fetch = require('node-fetch');
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+console.log("GEMINI KEY:", process.env.GEMINI_API_KEY);
 const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 // Helper: sleep
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
