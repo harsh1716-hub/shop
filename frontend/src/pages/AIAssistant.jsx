@@ -66,7 +66,7 @@ export default function AIAssistant() {
     setInsightsLoading(true);
     setInsightsError(false);
     try {
-      const res = await fetch('http://localhost:5000/api/ai/insights');
+      const res = await fetch('https://shop-h7pf.onrender.com/api/ai/insights');
       const data = await res.json();
       if (data.insights && Array.isArray(data.insights)) setInsights(data.insights);
       else setInsightsError(true);
@@ -85,7 +85,7 @@ export default function AIAssistant() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/ai/chat', {
+      const res = await fetch('https://shop-h7pf.onrender.com/api/ai/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: msg })

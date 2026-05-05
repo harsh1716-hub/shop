@@ -14,7 +14,7 @@ const Billing = () => {
   // Fetch products from backend
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/products');
+      const response = await fetch('https://shop-h7pf.onrender.com/api/products');
       const data = await response.json();
       setProducts(data.products || []);
       setLoading(false);
@@ -75,7 +75,7 @@ const Billing = () => {
     if (cart.length === 0) return;
 
     try {
-      const response = await fetch('http://localhost:5000/api/sales', {
+      const response = await fetch('https://shop-h7pf.onrender.com/api/sales', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items: cart, customer_id: null })

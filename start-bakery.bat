@@ -21,6 +21,6 @@ cd ../frontend
 start cmd /k "npm run preview"
 
 echo Both servers are booting up. 
-echo Backend will run on http://localhost:5000
+echo Backend will run on https://shop-h7pf.onrender.com
 echo Frontend will run on http://localhost:5173
 pause

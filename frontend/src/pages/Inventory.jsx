@@ -28,7 +28,7 @@ export default function Inventory() {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/products');
+      const res = await fetch('https://shop-h7pf.onrender.com/api/products');
       const data = await res.json();
       setProducts(data.products || []);
     } catch {
@@ -53,7 +53,7 @@ export default function Inventory() {
   const saveEdit = async () => {
     setSaving(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${editingId}`, {
+      const res = await fetch(`https://shop-h7pf.onrender.com/api/products/${editingId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editData)
@@ -79,7 +79,7 @@ export default function Inventory() {
     }
     setSaving(true);
     try {
-      const res = await fetch('http://localhost:5000/api/products', {
+      const res = await fetch('https://shop-h7pf.onrender.com/api/products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

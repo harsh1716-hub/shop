@@ -19,8 +19,8 @@ const Dashboard = () => {
     setLoading(true);
     try {
       const [dashRes, freshRes] = await Promise.all([
-        fetch('http://localhost:5000/api/dashboard'),
-        fetch('http://localhost:5000/api/bakery/freshness')
+        fetch('https://shop-h7pf.onrender.com/api/dashboard'),
+        fetch('https://shop-h7pf.onrender.com/api/bakery/freshness')
       ]);
       const dashData = await dashRes.json();
       const freshData = await freshRes.json();

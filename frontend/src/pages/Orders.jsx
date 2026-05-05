@@ -12,7 +12,7 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/orders');
+      const res = await fetch('https://shop-h7pf.onrender.com/api/orders');
       const data = await res.json();
       setOrders(data.orders || []);
     } catch (err) {
@@ -27,7 +27,7 @@ const Orders = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5000/api/orders', {
+      const res = await fetch('https://shop-h7pf.onrender.com/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -42,7 +42,7 @@ const Orders = () => {
   };
 
   const updateStatus = async (id, status) => {
-    await fetch(`http://localhost:5000/api/orders/${id}/status`, {
+    await fetch(`https://shop-h7pf.onrender.com/api/orders/${id}/status`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status })
